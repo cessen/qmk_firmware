@@ -130,26 +130,10 @@ tap_dance_action_t tap_dance_actions[] = {
 
 //-------------------------------------------------------------
 
-
-// // Aliases for readability
-// #define QWERTY   DF(_QWERTY)
-// #define COLEMAK  DF(_COLEMAK_DH)
-// #define DVORAK   DF(_DVORAK)
-
+// Aliases for readability
 #define SYM_HOT     TD(TD_SYM_HOT)
 #define NAV_OS      TD(TD_NAV_OS)
 #define CTRL_ALT    TD(TD_CTRL_ALT)
-// #define FKEYS    MO(_FUNCTION)
-// #define ADJUST   MO(_ADJUST)
-
-// #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
-// #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
-// #define CTL_MINS MT(MOD_RCTL, KC_MINUS)
-// #define ALT_ENT  MT(MOD_LALT, KC_ENT)
-
-// Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
-// The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
-// produces the key `tap` when tapped (i.e. pressed and released).
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
