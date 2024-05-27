@@ -30,7 +30,6 @@ enum layers {
     _OS,
     _SYM,
     _HOTKEY,
-    // _ADJUST,
 };
 
 //-------------------------------------------------------------
@@ -68,8 +67,8 @@ void td_ctrl_alt_release(tap_dance_state_t *state, void *user_data)
             unregister_code(KC_LALT);
             break;
         case 3:
-            unregister_code(KC_LCTL);
             unregister_code(KC_LALT);
+            unregister_code(KC_LCTL);
             break;
     }
 }
@@ -224,22 +223,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Hotkeys: easy access to common application hotkeys
  *
- * ,--------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |       |      |                              |      |      |      |      |      |        |
- * |--------+------+------+------+-------+------|                              |------+------+------+------+------+--------|
- * |        | Undo | Cut  | Copy | Paste |      |                              |      |      |      |      |      |        |
- * |--------+------+------+------+-------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |      |      |       |      |      |      |  |      |      |      |      |      |      |      |        |
- * `----------------------+------+-------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |       |      |      |      |  |      |      |      |      |      |
- *                        |      |       |      |      |      |  |      |      |      |      |      |
- *                        `-----------------------------------'  `----------------------------------'
+ * ,------------------------------------------------------.                              ,-------------------------------------------.
+ * |        |      |      | Shft-Copy | Shft-Paste |      |                              |      |      |      |      |      |        |
+ * |--------+------+------+-----------+------------+------|                              |------+------+------+------+------+--------|
+ * |        | Undo | Cut  | Copy      | Paste      |      |                              |      |      |      |      |      |        |
+ * |--------+------+------+-----------+------------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |           |            |      |      |      |  |      |      |      |      |      |      |      |        |
+ * `----------------------+-----------+------------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |           |            |      |      |      |  |      |      |      |      |      |
+ *                        |           |            |      |      |      |  |      |      |      |      |      |
+ *                        `---------------------------------------------'  `----------------------------------'
  */
     [_HOTKEY] = LAYOUT(
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, C(KC_Z), C(KC_X), C(KC_C), C(KC_V), XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      XXXXXXX, XXXXXXX, XXXXXXX, C(S(KC_C)), C(S(KC_V)), XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, C(KC_Z), C(KC_X), C(KC_C)   , C(KC_V)   , XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                                 _______   , _______   , _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 // /*
