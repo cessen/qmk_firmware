@@ -137,23 +137,23 @@ tap_dance_action_t tap_dance_actions[] = {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
- * Base Layer: Engrammer ("Programmer's Engram")
+ * Base Layer: Engram (but with custom punctuation layout)
  *
  * ,------------------------------------------.                                        ,------------------------------------------.
- * | Tab |  B  |  Y  |   O  |   U  |   ' "    |                                        |   ; :    |   L  |   D  |  W  |  V  |  Z  |
+ * | Tab |  B  |  Y  |   O  |   U  |   / ?    |                                        |   , <    |   L  |   D  |  W  |  V  |  Z  |
  * |-----+-----+-----+------+------+----------|                                        |----------+------+------+-----+-----+-----|
- * | Esc |  C  |  I  |   E  |   A  |   , <    |                                        |   . >    |   H  |   T  |  S  |  N  |  Q  |
+ * | Esc |  C  |  I  |   E  |   A  |   ' "    |                                        |   . >    |   H  |   T  |  S  |  N  |  Q  |
  * |-----+-----+-----+------+------+----------+------------------.  ,------------------+----------+------+------+-----+-----+-----|
- * |     |  G  |  X  |   J  |   K  |   - _    | Enter |   Sup    |  |  Sup     | Bksp  |   / ?    |   R  |   M  |  F  |  P  |     |
+ * |     |  G  |  X  |   J  |   K  |   - _    | Enter |   Sup    |  |  Sup     | Bksp  |   ; :    |   R  |   M  |  F  |  P  |     |
  * `-----------------+------+------+----------+-------+----------|  |----------+-------+----------+------+------+-----------------'
  *                   |      |      | Sym/Num  | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS   |      |      |
  *                   |      |      |          |       |          |  |          |       |          |      |      |
  *                   `-------------------------------------------'  `-------------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
-     KC_TAB  ,  KC_B , KC_Y , KC_O    , KC_U    , KC_QUOT ,                                            KC_SCLN , KC_L    , KC_D    , KC_W , KC_V , KC_Z    ,
-     KC_ESC  ,  KC_C , KC_I , KC_E    , KC_A    , KC_COMM ,                                            KC_DOT  , KC_H    , KC_T    , KC_S , KC_N , KC_Q    ,
-     XXXXXXX ,  KC_G , KC_X , KC_J    , KC_K    , KC_MINS , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC, KC_SLSH , KC_R    , KC_M    , KC_F , KC_P , XXXXXXX ,
+     KC_TAB  ,  KC_B , KC_Y , KC_O    , KC_U    , KC_SLSH ,                                            KC_COMM, KC_L    , KC_D    , KC_W , KC_V , KC_Z    ,
+     KC_ESC  ,  KC_C , KC_I , KC_E    , KC_A    , KC_QUOT ,                                            KC_DOT  , KC_H    , KC_T    , KC_S , KC_N , KC_Q    ,
+     XXXXXXX ,  KC_G , KC_X , KC_J    , KC_K    , KC_MINS , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC, KC_SCLN, KC_R    , KC_M    , KC_F , KC_P , XXXXXXX ,
                               _______ , _______ , SYM_HOT , KC_LSFT , CTRL_ALT,     CTRL_ALT, KC_SPC , NAV_OS  , _______ , _______
     ),
 
@@ -226,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------------------------------------------------------.                              ,-------------------------------------------.
  * |        |      |      | Shft-Copy | Shft-Paste |      |                              |      |      |      |      |      |        |
  * |--------+------+------+-----------+------------+------|                              |------+------+------+------+------+--------|
- * |        | Undo | Cut  | Copy      | Paste      |      |                              |      |      |      |      |      |        |
+ * |        |      | Cut  | Copy      | Paste      | Undo |                              |      |      |      |      |      |        |
  * |--------+------+------+-----------+------------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |           |            |      |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+-----------+------------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -236,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_HOTKEY] = LAYOUT(
       XXXXXXX, XXXXXXX, XXXXXXX, C(S(KC_C)), C(S(KC_V)), XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, C(KC_Z), C(KC_X), C(KC_C)   , C(KC_V)   , XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, C(KC_X), C(KC_C)   , C(KC_V)   , C(KC_Z),                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                  _______   , _______   , _______, _______, _______, _______, _______, _______, _______, _______
     ),
