@@ -140,20 +140,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: modified Engram
  *
  * ,----------------------------------------.                                        ,----------------------------------------.
- * |  Z  |  X  |  V  |  O  |  U  |   / ?    |                                        |   , <    |  L  |  D  |  W  |  J  |  Q  |
+ * |  Z  |  X  |  Y  |  O  |  U  |   / ?    |                                        |   , <    |  L  |  D  |  W  |  J  |  Q  |
  * |-----+-----+-----+-----+-----+----------|                                        |----------+-----+-----+-----+-----+-----|
  * | Esc |  C  |  I  |  E  |  A  |   ' "    |                                        |   . >    |  H  |  T  |  S  |  N  | Tab |
  * |-----+-----+-----+-----+-----+----------+------------------.  ,------------------+----------+-----+-----+-----+-----+-----|
- * |     |  G  |  Y  |  B  |  K  |   - _    | Enter |   Sup    |  |  Sup     | Bksp  |   ; :    |  R  |  M  |  F  |  P  |     |
+ * |     |  G  |  V  |  B  |  K  |   - _    | Enter |   Sup    |  |  Sup     | Bksp  |   ; :    |  R  |  M  |  F  |  P  |     |
  * `-----------------+-----+-----+----------+-------+----------|  |----------+-------+----------+-----+-----+-----------------'
  *                   |     |     | Sym/Num  | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS   |     |     |
  *                   |     |     |          |       |          |  |          |       |          |     |     |
  *                   `-----------------------------------------'  `-----------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
-     KC_Z    ,  KC_X , KC_V , KC_O    , KC_U    , KC_SLSH ,                                            KC_COMM, KC_L    , KC_D    , KC_W , KC_J , KC_Q    ,
+     KC_Z    ,  KC_X , KC_Y , KC_O    , KC_U    , KC_SLSH ,                                            KC_COMM, KC_L    , KC_D    , KC_W , KC_J , KC_Q    ,
      KC_ESC  ,  KC_C , KC_I , KC_E    , KC_A    , KC_QUOT ,                                            KC_DOT , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
-     XXXXXXX ,  KC_G , KC_Y , KC_B    , KC_K    , KC_MINS , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC, KC_SCLN, KC_R    , KC_M    , KC_F , KC_P , XXXXXXX ,
+     XXXXXXX ,  KC_G , KC_V , KC_B    , KC_K    , KC_MINS , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC, KC_SCLN, KC_R    , KC_M    , KC_F , KC_P , XXXXXXX ,
                               _______ , _______ , SYM_HOT , KC_LSFT , CTRL_ALT,     CTRL_ALT, KC_SPC , NAV_OS  , _______ , _______
     ),
 
