@@ -153,20 +153,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: modified Engram
  *
  * ,----------------------------------------.                                        ,----------------------------------------.
- * | ` ~ |  Z  |  Y  |  O  |  U  |    X     |                                        |    J     |  L  |  D  |  W  |  Q  | Del |
+ * | ` ~ |  Z  |  Y  |  O  |  U  |   , <    |                                        |   . >    |  L  |  D  |  W  |  Q  | Del |
  * |-----+-----+-----+-----+-----+----------|                                        |----------+-----+-----+-----+-----+-----|
- * | Esc |  C  |  I  |  E  |  A  |   , <    |                                        |   . >    |  H  |  T  |  S  |  N  | Tab |
+ * | Esc |  C  |  I  |  E  |  A  |    V     |                                        |    B     |  H  |  T  |  S  |  N  | Tab |
  * |-----+-----+-----+-----+-----+----------+------------------.  ,------------------+----------+-----+-----+-----+-----+-----|
- * | # % |  G  |  V  |  B  |  K  |   ' "    | Enter |   Sup    |  |  Sup     | Bksp  |   ; :    |  R  |  M  |  F  |  P  | @ $ |
+ * | # % |  G  |  X  |  J  |  K  |   ' "    | Enter |   Sup    |  |  Sup     | Bksp  |   ; :    |  R  |  M  |  F  |  P  | @ $ |
  * `-----------------+-----+-----+----------+-------+----------|  |----------+-------+----------+-----+-----+-----------------'
  *                   |     |     | Sym/Num  | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS   |     |     |
  *                   |     |     |          |       |          |  |          |       |          |     |     |
  *                   `-----------------------------------------'  `-----------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
-     KC_GRV  ,    KC_Z , KC_Y , KC_O    , KC_U    , KC_X    ,                                            KC_J   , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
-     KC_ESC  ,    KC_C , KC_I , KC_E    , KC_A    , KC_COMM ,                                            KC_DOT , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
-     RSFT(KC_3),  KC_G , KC_V , KC_B    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC, KC_SCLN, KC_R    , KC_M    , KC_F , KC_P , RSFT(KC_2),
+     KC_GRV  ,    KC_Z , KC_Y , KC_O    , KC_U    , KC_COMM ,                                            KC_DOT , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
+     KC_ESC  ,    KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                            KC_B   , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
+     RSFT(KC_3),  KC_G , KC_X , KC_J    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC, KC_SCLN, KC_R    , KC_M    , KC_F , KC_P , RSFT(KC_2),
                                 _______ , _______ , SYM_HOT , KC_LSFT , CTRL_ALT,     CTRL_ALT, KC_SPC , NAV_OS , _______ , _______
     ),
 
