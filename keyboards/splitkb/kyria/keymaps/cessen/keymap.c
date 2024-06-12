@@ -167,8 +167,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ENGRAM] = LAYOUT(
      _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_COMM ,                                             KC_DOT  , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
      KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B    , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
-     _______ , KC_G , KC_X , KC_J    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_SCLN , KC_R    , KC_M    , KC_F , KC_P , _______ ,
-                             _______ , _______ , CTRL_ALT, KC_LSFT , NUM_MISC,     NAV_OS  , KC_SLSH  , CTRL_ALT, _______ , _______
+     _______ , KC_G , KC_X , KC_J    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_SLSH , KC_R    , KC_M    , KC_F , KC_P , _______ ,
+                             _______ , _______ , CTRL_ALT, KC_LSFT , NUM_MISC,     NAV_OS  , KC_SPC  , CTRL_ALT, _______ , _______
     ),
 
 /*
