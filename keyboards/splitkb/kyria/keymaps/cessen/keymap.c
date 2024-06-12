@@ -29,7 +29,7 @@ enum layers {
     _NAV,
     _NUM,
     _OS,
-    _HOTKEY,
+    _MISC,
 };
 
 //-------------------------------------------------------------
@@ -38,7 +38,7 @@ enum layers {
 enum tap_dance {
     TD_CTRL_ALT,
     TD_NAV_OS,
-    TD_NUM_HOT,
+    TD_NUM_MISC,
 };
 
 // Ctrl/Alt tap dance.
@@ -98,25 +98,25 @@ void td_nav_os_release(tap_dance_state_t *state, void *user_data)
 }
 
 // Number layer tap dance.
-void td_num_hot_press(tap_dance_state_t *state, void *user_data)
+void td_num_misc_press(tap_dance_state_t *state, void *user_data)
 {
     switch (state->count) {
         case 1:
             layer_on(_NUM);
             break;
         case 2:
-            layer_on(_HOTKEY);
+            layer_on(_MISC);
             break;
     }
 }
-void td_num_hot_release(tap_dance_state_t *state, void *user_data)
+void td_num_misc_release(tap_dance_state_t *state, void *user_data)
 {
     switch (state->count) {
         case 1:
             layer_off(_NUM);
             break;
         case 2:
-            layer_off(_HOTKEY);
+            layer_off(_MISC);
             break;
     }
 }
@@ -124,26 +124,27 @@ void td_num_hot_release(tap_dance_state_t *state, void *user_data)
 tap_dance_action_t tap_dance_actions[] = {
     [TD_CTRL_ALT] = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(td_ctrl_alt_press, td_ctrl_alt_release, NULL, NULL),
     [TD_NAV_OS]   = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(td_nav_os_press,   td_nav_os_release,   NULL, NULL),
-    [TD_NUM_HOT]  = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(td_num_hot_press,  td_num_hot_release,  NULL, NULL),
+    [TD_NUM_MISC]  = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(td_num_misc_press,  td_num_misc_release,  NULL, NULL),
 };
 
 //-------------------------------------------------------------
 // Key overrides.
 
-
-const key_override_t punc_1 = ko_make_basic(MOD_BIT(KC_LSFT), RSFT(KC_3), RSFT(KC_5));
-const key_override_t punc_2 = ko_make_basic(MOD_BIT(KC_LSFT), RSFT(KC_2), RSFT(KC_4));
+const key_override_t comma_semicolon = ko_make_basic(MOD_BIT(KC_LSFT), KC_COMM, KC_SCLN);
+const key_override_t dot_colon = ko_make_basic(MOD_BIT(KC_LSFT), KC_DOT, LSFT(KC_SCLN));
+const key_override_t slash_minus = ko_make_basic(MOD_BIT(KC_LSFT), KC_SLSH, KC_MINUS);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &punc_1,
-    &punc_2,
+    &comma_semicolon,
+    &dot_colon,
+    &slash_minus,
     NULL // Null terminate the array of overrides!
 };
 //-------------------------------------------------------------
 
 // Aliases for readability
-#define NUM_HOT     TD(TD_NUM_HOT)
+#define NUM_MISC     TD(TD_NUM_MISC)
 #define NAV_OS      TD(TD_NAV_OS)
 #define CTRL_ALT    TD(TD_CTRL_ALT)
 
@@ -153,74 +154,74 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: modified Engram
  *
  * ,----------------------------------------.                                     ,----------------------------------------.
- * | ` ~ |  Z  |  Y  |  O  |  U  |   , <    |                                     |   . >    |  L  |  D  |  W  |  Q  | Del |
+ * |     |  Z  |  Y  |  O  |  U  |   , ;    |                                     |   . :    |  L  |  D  |  W  |  Q  | Del |
  * |-----+-----+-----+-----+-----+----------|                                     |----------+-----+-----+-----+-----+-----|
  * | Esc |  C  |  I  |  E  |  A  |    V     |                                     |    B     |  H  |  T  |  S  |  N  | Tab |
  * |-----+-----+-----+-----+-----+----------+-----------------.  ,----------------+----------+-----+-----+-----+-----+-----|
- * |     |  G  |  X  |  J  |  K  |   ' "    | Enter |   Sup   |  |   Sup  | Bksp  |   ; :    |  R  |  M  |  F  |  P  |     |
+ * |     |  G  |  X  |  J  |  K  |   ' "    | Enter |   Sup   |  |   Sup  | Bksp  |   / -    |  R  |  M  |  F  |  P  |     |
  * `-----------------+-----+-----+----------+-------+---------|  |--------+-------+----------+-----+-----+-----------------'
  *                   |     |     | Ctrl/Alt | Shift | Sym/Num |  | Nav/OS | Space | Ctrl/Alt |     |     |
  *                   |     |     |          |       |         |  |        |       |          |     |     |
  *                   `----------------------------------------'  `---------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
-     KC_GRV  , KC_Z , KC_Y , KC_O    , KC_U    , KC_COMM ,                                             KC_DOT  , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
+     _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_COMM ,                                             KC_DOT  , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
      KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B    , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
      _______ , KC_G , KC_X , KC_J    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_SCLN , KC_R    , KC_M    , KC_F , KC_P , _______ ,
-                             _______ , _______ , CTRL_ALT, KC_LSFT , NUM_HOT ,     NAV_OS  , KC_SPC  , CTRL_ALT, _______ , _______
+                             _______ , _______ , CTRL_ALT, KC_LSFT , NUM_MISC,     NAV_OS  , KC_SLSH  , CTRL_ALT, _______ , _______
     ),
 
 /*
  * Nav Layer: navigation and left symbols.
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |  |   |  [   |  ]   |  +   |                              | PgUp | Home |   ↑  | End  |      |        |
+ * |        |      |  /   |  *   |  <   |  >   |                              | PgUp | Home |   ↑  | End  |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |   \    |  !   |  &   |  (   |  )   |  -   |                              | PgDn |  ←   |   ↓  |   →  |      |        |
+ * |        |  !   |  -   |  +   |  =   |  `   |                              | PgDn |  ←   |   ↓  |   →  |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  %   |  ^   |  {   |  }   |  =   |      |      |  |      |      |      |      |      |      |      |        |
+ * |        |  ~   |  |   |  &   |  ^   |  %   |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      XXXXXXX, XXXXXXX, KC_PIPE, KC_LBRC, KC_RBRC, KC_PLUS,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
-      KC_BSLS, KC_EXLM, KC_AMPR, KC_LPRN, KC_RPRN, KC_MINS,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
-      XXXXXXX, KC_PERC, KC_CIRC, KC_LCBR, KC_RCBR, KC_EQL , _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, KC_SLSH, KC_ASTR, KC_LT  , KC_GT  ,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_GRV ,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_TILD, KC_PIPE, KC_AMPR, KC_CIRC, KC_PERC, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 /*
- * Sym Layer: numbers and right symbols.
+ * Num Layer: numbers and right symbols.
  *   
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |  F9  |  F10 |  F11 |  F12 |      |                              |  *   |  7   |  8   |  9   |  $   |        |
+ * |        |      |  5   |  4   |  3   |      |                              |      |  #   |  [   |  ]   |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  F5  |  F6  |  F7  |  F8  |      |                              |  /   |  4   |  5   |  6   |  ?   |   #    |
+ * |        |  .   |  2   |  1   |  0   |  9   |                              |      |  @   |  (   |  )   |  ?   |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  F1  |  F2  |  F3  |  F4  |      |      |      |  |      |      |  0   |  1   |  2   |  3   |  @   |        |
+ * |        |      |  8   |  7   |  6   |      |      |      |  |      |      |      |  $   |  {   |  }   |  \   |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      |      |      |  |      |  _   |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NUM] = LAYOUT(
-     XXXXXXX, KC_F9  , KC_F10 , KC_F11 , KC_F12 , XXXXXXX,                                     KC_ASTR, KC_7   , KC_8   , KC_9   , KC_DLR , XXXXXXX,
-     XXXXXXX, KC_F5  , KC_F6  , KC_F7  , KC_F8  , XXXXXXX,                                     KC_SLSH, KC_4   , KC_5   , KC_6   , KC_QUES, KC_HASH,
-     XXXXXXX, KC_F1  , KC_F2  , KC_F3  , KC_F4  , XXXXXXX, _______, _______, _______, _______, KC_0   , KC_1   , KC_2   , KC_3   , KC_AT  , XXXXXXX,
-                                 _______, _______, _______, _______, _______, _______, KC_UNDS, _______, _______, _______
+     XXXXXXX, XXXXXXX, KC_5   , KC_4   , KC_3   , XXXXXXX,                                     XXXXXXX, KC_HASH, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX,
+     XXXXXXX, KC_DOT , KC_2   , KC_1   , KC_0   , KC_9   ,                                     XXXXXXX, KC_AT  , KC_LPRN, KC_RPRN, KC_QUES, XXXXXXX,
+     XXXXXXX, XXXXXXX, KC_8   , KC_7   , KC_6   , XXXXXXX, _______, _______, _______, _______, XXXXXXX, KC_DLR , KC_LCBR, KC_RCBR, KC_BSLS, XXXXXXX,
+                                _______, _______, _______, _______, _______, _______, KC_UNDS, _______, _______, _______
     ),
     
 /*
- * OS Layer: window management, media keys.
+ * OS Layer: window management, media keys, function keys.
  *
  * ,--------------------------------------------------------.                              ,------------------------------------------------------------------.
  * |         |      |      |       | Sup+Spc | Sup+Shft+Del |                              | Sup+Shft+↑ | Sup+Shft+← | Sup+↑ | Sup+Shft+→ |      |            |
  * |---------+------+------+-------+---------+--------------|                              |------------+------------+-------+------------+------+------------|
  * | Sup+Esc |      |      | Sup+E | Sup+R   | Sup+T        |                              | Sup+Shft+↓ | Sup+←      | Sup+↓ | Sup+→      |      | Sup+Bckspc |
  * |---------+------+------+-------+---------+--------------+-------------.  ,-------------+------------+------------+-------+------------+------+------------|
- * |         |      |      |       |         |              |      |      |  |      |      |            |            |       |            |      |            |
+ * |   F1    |  F2  |  F3  |  F4   |   F5    |      F6      |      |      |  |      |      |    F12     |    F11     |  F10  |     F9     |  F8  |     F7     |
  * `-----------------------+-------+---------+--------------+------+------|  |------+------+------------+------------+-------+--------------------------------'
  *                         |       |         |              |      |      |  |      |      |            |            |       |
  *                         |       |         |              |      |      |  |      |      |            |            |       |
@@ -229,12 +230,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_OS] = LAYOUT(
       XXXXXXX  , XXXXXXX, XXXXXXX, XXXXXXX, G(KC_SPC), C(A(KC_DEL)),                                     G(S(KC_UP))  , G(S(KC_LEFT)), G(KC_UP)  , G(S(KC_RGHT)), XXXXXXX, XXXXXXX   ,
       G(KC_ESC), XXXXXXX, XXXXXXX, G(KC_E), G(KC_R)  , G(KC_T)     ,                                     G(S(KC_DOWN)), G(KC_LEFT)   , G(KC_DOWN), G(KC_RGHT)   , XXXXXXX, G(KC_BSPC),
-      XXXXXXX  , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  , XXXXXXX     , _______, _______, _______, _______, _______      , XXXXXXX      , XXXXXXX   , XXXXXXX      , XXXXXXX, XXXXXXX   ,
+      KC_F1    , KC_F2  , KC_F3  , KC_F4  , KC_F5    , KC_F6       , _______, _______, _______, _______, KC_F12       , KC_F11       , KC_F10    , KC_F9        , KC_F8  , KC_F7     ,
                                    _______, _______  , _______     , _______, _______, _______, _______, _______      , _______      , _______
     ),
 
 /*
- * Hotkeys: easy access to common application hotkeys
+ * Misc Layer: various other keys and combos.
  *
  * ,------------------------------------------------------.                              ,-------------------------------------------.
  * |        |      |      | Shft-Copy | Shft-Paste |      |                              |      |      |      |      |      |        |
@@ -247,10 +248,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        |           |            |      |      |      |  |      |      |      |      |      |
  *                        `---------------------------------------------'  `----------------------------------'
  */
-    [_HOTKEY] = LAYOUT(
-      XXXXXXX, XXXXXXX, XXXXXXX, C(S(KC_C)), C(S(KC_V)), XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, C(KC_X), C(KC_C)   , C(KC_V)   , C(KC_Z),                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    [_MISC] = LAYOUT(
+      XXXXXXX, XXXXXXX, XXXXXXX, C(S(KC_C)), C(S(KC_V)), XXXXXXX,                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+      XXXXXXX, XXXXXXX, C(KC_X), C(KC_C)   , C(KC_V)   , C(KC_Z),                                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX   , XXXXXXX   , XXXXXXX, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,
                                  _______   , _______   , _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
