@@ -130,21 +130,27 @@ tap_dance_action_t tap_dance_actions[] = {
 //-------------------------------------------------------------
 // Key overrides.
 
-const key_override_t comma_semicolon = ko_make_basic(MOD_BIT(KC_LSFT), KC_COMM, KC_SCLN);
-const key_override_t dot_colon = ko_make_basic(MOD_BIT(KC_LSFT), KC_DOT, LSFT(KC_SCLN));
-const key_override_t slash_minus = ko_make_basic(MOD_BIT(KC_LSFT), KC_SLSH, KC_MINUS);
+const key_override_t comma_comma = ko_make_basic(MOD_BIT(KC_LSFT), KC_COMM, KC_COMM);
+const key_override_t dot_dot = ko_make_basic(MOD_BIT(KC_LSFT), KC_DOT, KC_DOT);
+const key_override_t under_under = ko_make_basic(MOD_BIT(KC_LSFT), RSFT(KC_MINS), RSFT(KC_MINS));
+const key_override_t quote_quote = ko_make_basic(MOD_BIT(KC_LSFT), KC_QUOT, KC_QUOT);
+const key_override_t minus_minus = ko_make_basic(MOD_BIT(KC_LSFT), KC_MINS, KC_MINS);
+const key_override_t slash_slash = ko_make_basic(MOD_BIT(KC_LSFT), KC_SLSH, KC_SLSH);
 
 // This globally defines all key overrides to be used
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &comma_semicolon,
-    &dot_colon,
-    &slash_minus,
+    &comma_comma,
+    &dot_dot,
+    &under_under,
+    &quote_quote,
+    &minus_minus,
+    &slash_slash,
     NULL // Null terminate the array of overrides!
 };
 //-------------------------------------------------------------
 
 // Aliases for readability
-#define NUM_MISC     TD(TD_NUM_MISC)
+#define NUM_MISC    TD(TD_NUM_MISC)
 #define NAV_OS      TD(TD_NAV_OS)
 #define CTRL_ALT    TD(TD_CTRL_ALT)
 
@@ -153,31 +159,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Base Layer: modified Engram
  *
- * ,----------------------------------------.                                     ,----------------------------------------.
- * |     |  Z  |  Y  |  O  |  U  |   , ;    |                                     |   . :    |  L  |  D  |  W  |  Q  | Del |
- * |-----+-----+-----+-----+-----+----------|                                     |----------+-----+-----+-----+-----+-----|
- * | Esc |  C  |  I  |  E  |  A  |    V     |                                     |    B     |  H  |  T  |  S  |  N  | Tab |
- * |-----+-----+-----+-----+-----+----------+-----------------.  ,----------------+----------+-----+-----+-----+-----+-----|
- * |     |  G  |  X  |  J  |  K  |   ' "    | Enter |   Sup   |  |   Sup  | Bksp  |   / -    |  R  |  M  |  F  |  P  |     |
- * `-----------------+-----+-----+----------+-------+---------|  |--------+-------+----------+-----+-----+-----------------'
- *                   |     |     | Ctrl/Alt | Shift | Sym/Num |  | Nav/OS | Space | Ctrl/Alt |     |     |
- *                   |     |     |          |       |         |  |        |       |          |     |     |
+ * ,---------------------------------------.                                        ,--------------------------------------.
+ * |     |  Z  |  Y  |  O  |  U  |    '    |                                        |   _    |  L  |  D  |  W  |  Q  | Del |
+ * |-----+-----+-----+-----+-----+---------|                                        |--------+-----+-----+-----+-----+-----|
+ * | Esc |  C  |  I  |  E  |  A  |    V    |                                        |   B    |  H  |  T  |  S  |  N  | Tab |
+ * |-----+-----+-----+-----+-----+---------+------------------.  ,------------------+--------+-----+-----+-----+-----+-----|
+ * |     |  G  |  X  |  J  |  K  |    ,    | Enter |   Sup    |  |   Sup    | Bksp  |   .    |  R  |  M  |  F  |  P  |     |
+ * `-----------------+-----+-----+---------+-------+----------|  |----------+-------+--------+-----+-----+-----------------'
+ *                   |     |     | Sym/Num | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS |     |     |
+ *                   |     |     |         |       |          |  |          |       |        |     |     |
  *                   `----------------------------------------'  `---------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
-     _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_COMM ,                                             KC_DOT  , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
-     KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B    , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
-     _______ , KC_G , KC_X , KC_J    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_SLSH , KC_R    , KC_M    , KC_F , KC_P , _______ ,
-                             _______ , _______ , CTRL_ALT, KC_LSFT , NUM_MISC,     NAV_OS  , KC_SPC  , CTRL_ALT, _______ , _______
+     _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_QUOT ,                                             RSFT(KC_MINS) , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
+     KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B          , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
+     _______ , KC_G , KC_X , KC_J    , KC_K    , KC_COMM , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_DOT        , KC_R    , KC_M    , KC_F , KC_P , _______ ,
+                             _______ , _______ , NUM_MISC, KC_LSFT , CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS        , _______ , _______
     ),
 
 /*
  * Nav Layer: navigation and left symbols.
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |  /   |  *   |  <   |  >   |                              | PgUp | Home |   ↑  | End  |      |        |
+ * |        |      |  *   |  /   |  >   |  <   |                              | PgUp | Home |   ↑  | End  |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  !   |  -   |  +   |  =   |  `   |                              | PgDn |  ←   |   ↓  |   →  |      |        |
+ * |        |  :   |  +   |  -   |  =   |  `   |                              | PgDn |  ←   |   ↓  |   →  |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |  ~   |  |   |  &   |  ^   |  %   |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -186,8 +192,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      XXXXXXX, XXXXXXX, KC_SLSH, KC_ASTR, KC_LT  , KC_GT  ,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
-      XXXXXXX, KC_EXLM, KC_MINS, KC_PLUS, KC_EQL , KC_GRV ,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, KC_ASTR, KC_SLSH, KC_GT  , KC_LT  ,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_COLN, KC_PLUS, KC_MINS, KC_EQL , KC_GRV ,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
       XXXXXXX, KC_TILD, KC_PIPE, KC_AMPR, KC_CIRC, KC_PERC, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
@@ -196,21 +202,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Num Layer: numbers and right symbols.
  *   
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |  5   |  4   |  3   |      |                              |      |  #   |  [   |  ]   |      |        |
+ * |        |      |  5   |  4   |  3   |      |                              |  $   |  #   |  [   |  ]   |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  .   |  2   |  1   |  0   |  9   |                              |      |  @   |  (   |  )   |  ?   |        |
+ * |        |  .   |  2   |  1   |  0   |  9   |                              |  !   |  "   |  (   |  )   |  ;   |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |      |  8   |  7   |  6   |      |      |      |  |      |      |      |  $   |  {   |  }   |  \   |        |
+ * |        |      |  8   |  7   |  6   |      |      |      |  |      |      |  ?   |  @   |  {   |  }   |  \   |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |  _   |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NUM] = LAYOUT(
-     XXXXXXX, XXXXXXX, KC_5   , KC_4   , KC_3   , XXXXXXX,                                     XXXXXXX, KC_HASH, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX,
-     XXXXXXX, KC_DOT , KC_2   , KC_1   , KC_0   , KC_9   ,                                     XXXXXXX, KC_AT  , KC_LPRN, KC_RPRN, KC_QUES, XXXXXXX,
-     XXXXXXX, XXXXXXX, KC_8   , KC_7   , KC_6   , XXXXXXX, _______, _______, _______, _______, XXXXXXX, KC_DLR , KC_LCBR, KC_RCBR, KC_BSLS, XXXXXXX,
-                                _______, _______, _______, _______, _______, _______, KC_UNDS, _______, _______, _______
+     XXXXXXX, XXXXXXX, KC_5   , KC_4   , KC_3   , XXXXXXX,                                     KC_DLR , KC_HASH, KC_LBRC, KC_RBRC, XXXXXXX, XXXXXXX,
+     XXXXXXX, KC_DOT , KC_2   , KC_1   , KC_0   , KC_9   ,                                     KC_EXLM, KC_DQUO, KC_LPRN, KC_RPRN, KC_SCLN, XXXXXXX,
+     XXXXXXX, XXXXXXX, KC_8   , KC_7   , KC_6   , XXXXXXX, _______, _______, _______, _______, KC_QUES, KC_AT  , KC_LCBR, KC_RCBR, KC_BSLS, XXXXXXX,
+                                _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
     
 /*
