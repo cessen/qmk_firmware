@@ -153,6 +153,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 #define NUM_MISC    TD(TD_NUM_MISC)
 #define NAV_OS      TD(TD_NAV_OS)
 #define CTRL_ALT    TD(TD_CTRL_ALT)
+#define OSM_LSFT    OSM(MOD_LSFT)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -160,21 +161,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: modified Engram
  *
  * ,---------------------------------------.                                        ,--------------------------------------.
- * |     |  Z  |  Y  |  O  |  U  |    '    |                                        |   _    |  L  |  D  |  W  |  Q  | Del |
- * |-----+-----+-----+-----+-----+---------|                                        |--------+-----+-----+-----+-----+-----|
- * | Esc |  C  |  I  |  E  |  A  |    V    |                                        |   B    |  H  |  T  |  S  |  N  | Tab |
- * |-----+-----+-----+-----+-----+---------+------------------.  ,------------------+--------+-----+-----+-----+-----+-----|
- * |     |  G  |  X  |  J  |  K  |    ,    | Enter |   Sup    |  |   Sup    | Bksp  |   .    |  R  |  M  |  F  |  P  |     |
- * `-----------------+-----+-----+---------+-------+----------|  |----------+-------+--------+-----+-----+-----------------'
- *                   |     |     | Sym/Num | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS |     |     |
- *                   |     |     |         |       |          |  |          |       |        |     |     |
- *                   `----------------------------------------'  `---------------------------------------'
+ * |     |  Z  |  Y  |  O   |  U  |    '    |                                        |   _    |  L  |  D  |  W  |  Q  | Del |
+ * |-----+-----+-----+------+-----+---------|                                        |--------+-----+-----+-----+-----+-----|
+ * | Esc |  C  |  I  |  E   |  A  |    V    |                                        |   B    |  H  |  T  |  S  |  N  | Tab |
+ * |-----+-----+-----+------+-----+---------+------------------.  ,------------------+--------+-----+-----+-----+-----+-----|
+ * |     |  G  |  X  |  J   |  K  |    ,    | Enter |   Sup    |  |   Sup    | Bksp  |   .    |  R  |  M  |  F  |  P  |     |
+ * `-----------------+------+-----+---------+-------+----------|  |----------+-------+--------+-----+-----+-----------------'
+ *                   | ONE  |     | Sym/Num | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS |     |     |
+ *                   | SHOT |     |         |       |          |  |          |       |        |     |     |
+ *                   `-----------------------------------------'  `---------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
      _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_QUOT ,                                             RSFT(KC_MINS) , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
      KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B          , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
      _______ , KC_G , KC_X , KC_J    , KC_K    , KC_COMM , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_DOT        , KC_R    , KC_M    , KC_F , KC_P , _______ ,
-                             _______ , _______ , NUM_MISC, KC_LSFT , CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS        , _______ , _______
+                             OS_TOGG , _______ , NUM_MISC, OSM_LSFT, CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS        , _______ , _______
     ),
 
 /*
