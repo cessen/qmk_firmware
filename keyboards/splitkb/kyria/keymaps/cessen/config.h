@@ -22,6 +22,9 @@
 /* Time (in ms) before the one shot key is released */
 #define ONESHOT_TIMEOUT 250  
 
+/* Idle time before caps word self-disables, in milliseconds. */
+#define CAPS_WORD_IDLE_TIMEOUT 3000
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_EFFECT_BREATHING
 #    define RGBLIGHT_EFFECT_RAINBOW_MOOD
