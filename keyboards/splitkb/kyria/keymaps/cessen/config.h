@@ -25,6 +25,9 @@
 /* Idle time before caps word self-disables, in milliseconds. */
 #define CAPS_WORD_IDLE_TIMEOUT 3000
 
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_EFFECT_BREATHING
 #    define RGBLIGHT_EFFECT_RAINBOW_MOOD

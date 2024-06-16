@@ -173,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_QUOT ,                                             KC_UNDS , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
      KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B    , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
      _______ , KC_G , KC_X , KC_J    , KC_K    , KC_DOT  , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_COMM , KC_R    , KC_M    , KC_F , KC_P , _______ ,
-                             OS_TOGG , _______ , NUM_MISC, OSM_LSFT, CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS  , _______ , _______
+                             OS_TOGG , _______ , NUM_MISC, KC_LSFT, CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS  , _______ , _______
     ),
 
 /*
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       XXXXXXX, XXXXXXX, KC_ASTR, KC_SLSH, KC_GT  , KC_LT  ,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
       XXXXXXX, KC_COLN, KC_PLUS, KC_MINS, KC_EQL , KC_GRV ,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
       XXXXXXX, KC_TILD, KC_PIPE, KC_AMPR, KC_CIRC, KC_PERC, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                                 _______, _______, _______, CW_TOGG, _______, _______, _______, _______, _______, _______
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 /*
