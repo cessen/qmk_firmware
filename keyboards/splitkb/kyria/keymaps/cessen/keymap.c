@@ -159,21 +159,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: modified Engram
  *
  * ,---------------------------------------.                                        ,--------------------------------------.
- * |     |  Z  |  Y  |  O   |  U  |    '    |                                        |   _    |  L  |  D  |  W  |  Q  | Del |
+ * |     |  Z  |  Y  |  O   |  U  |    .    |                                        |   ,    |  L  |  D  |  W  |  Q  | Del |
  * |-----+-----+-----+------+-----+---------|                                        |--------+-----+-----+-----+-----+-----|
  * | Esc |  C  |  I  |  E   |  A  |    V    |                                        |   B    |  H  |  T  |  S  |  N  | Tab |
  * |-----+-----+-----+------+-----+---------+------------------.  ,------------------+--------+-----+-----+-----+-----+-----|
- * |     |  G  |  X  |  J   |  K  |    .    | Enter |   Sup    |  |   Sup    | Bksp  |   ,    |  R  |  M  |  F  |  P  |     |
+ * |     |  G  |  X  |  J   |  K  |    '    | Enter |   Sup    |  |   Sup    | Bksp  |   _    |  R  |  M  |  F  |  P  |     |
  * `-----------------+------+-----+---------+-------+----------|  |----------+-------+--------+-----+-----+-----------------'
  *                   | ONE  |     | Sym/Num | Shift | Ctrl/Alt |  | Ctrl/Alt | Space | Nav/OS |     |     |
  *                   | SHOT |     |         |       |          |  |          |       |        |     |     |
  *                   `-----------------------------------------'  `---------------------------------------'
  */
     [_ENGRAM] = LAYOUT(
-     _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_QUOT ,                                             KC_UNDS , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
+     _______ , KC_Z , KC_Y , KC_O    , KC_U    , KC_DOT  ,                                             KC_COMM , KC_L    , KC_D    , KC_W , KC_Q , KC_DEL  ,
      KC_ESC  , KC_C , KC_I , KC_E    , KC_A    , KC_V    ,                                             KC_B    , KC_H    , KC_T    , KC_S , KC_N , KC_TAB  ,
-     _______ , KC_G , KC_X , KC_J    , KC_K    , KC_DOT  , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_COMM , KC_R    , KC_M    , KC_F , KC_P , _______ ,
-                             OS_TOGG , _______ , NUM_MISC, KC_LSFT, CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS  , _______ , _______
+     _______ , KC_G , KC_X , KC_J    , KC_K    , KC_QUOT , KC_ENT  , KC_LGUI ,     KC_LGUI , KC_BSPC , KC_UNDS , KC_R    , KC_M    , KC_F , KC_P , _______ ,
+                             OS_TOGG , _______ , NUM_MISC, KC_LSFT , CTRL_ALT,     CTRL_ALT, KC_SPC  , NAV_OS  , _______ , _______
     ),
 
 /*
