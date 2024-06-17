@@ -180,20 +180,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Nav Layer: navigation and left symbols.
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |  *   |  /   |  >   |  <   |                              | PgUp | Home |   ↑  | End  |      |        |
+ * |        |      |  *   |  /   |  ^   |  `   |                              | PgUp | Home |   ↑  | End  |      |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  :   |  +   |  -   |  =   |  `   |                              | PgDn |  ←   |   ↓  |   →  |      |        |
+ * |        |  :   |  +   |  -   |  =   |  &   |                              | PgDn |  ←   |   ↓  |   →  |      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |  ~   |  |   |  &   |  ^   |  %   |      |      |  |      |      |      |      |      |      |      |        |
+ * |        |  ~   |  |   |  <   |  >   |  %   |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      |      |      | Caps |      |  |      |      |      |      |      |
  *                        |      |      |      | Word |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-      XXXXXXX, XXXXXXX, KC_ASTR, KC_SLSH, KC_GT  , KC_LT  ,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
-      XXXXXXX, KC_COLN, KC_PLUS, KC_MINS, KC_EQL , KC_GRV ,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
-      XXXXXXX, KC_TILD, KC_PIPE, KC_AMPR, KC_CIRC, KC_PERC, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      XXXXXXX, XXXXXXX, KC_ASTR, KC_SLSH, KC_CIRC, KC_GRV ,                                     KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_COLN, KC_PLUS, KC_MINS, KC_EQL , KC_AMPR,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+      XXXXXXX, KC_TILD, KC_PIPE, KC_LT  , KC_GT  , KC_PERC, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
